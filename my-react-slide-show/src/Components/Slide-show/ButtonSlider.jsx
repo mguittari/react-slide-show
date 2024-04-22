@@ -1,6 +1,6 @@
-import React from "react";
 import leftArrow from "../Slide-show/Icons/left-arrow.svg";
 import rightArrow from "../Slide-show/Icons/right-arrow.svg";
+import propTypes from "prop-types";
 
 export default function ButtonSlider({ direction, moveSlide }) {
   return (
@@ -14,3 +14,8 @@ export default function ButtonSlider({ direction, moveSlide }) {
     </button>
   );
 }
+
+ButtonSlider.propTypes = {
+  direction: propTypes.oneOf(["next", "prev"]).isRequired,
+  moveSlide: propTypes.func.isRequired,
+};

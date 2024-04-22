@@ -19,6 +19,10 @@ export default function Slider({ pictures }) {
     }
   };
 
+  const moveDot = (index) => {
+    setSlideIndex(index);
+  };
+
   return (
     <div className="container-slider max-w-[700px] h-[500px] relative overflow-hidden m-10">
       {pictures.map((picture, index) => (
@@ -33,6 +37,19 @@ export default function Slider({ pictures }) {
       ))}
       <ButtonSlider moveSlide={nextSlide} direction={"next"} />
       <ButtonSlider moveSlide={prevSlide} direction={"prev"} />
+      <div className="container-dots absolute flex bottom-0 left-1/2 transform -translate-x-1/2">
+        {Array.from({ length: pictures.length }).map((item, index) => (
+          <div
+            onClick={() => moveDot(index + 1)}
+            key={index}
+            className={`${
+              slideIndex === index + 1
+                ? "bg-gray-700 border-4 border-white"
+                : "dots"
+            } bg-white w-6 h-6 rounded-full mx-2 mb-2 z-10 cursor-pointer`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
